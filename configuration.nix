@@ -53,7 +53,7 @@
   # };
 
   # Enable touchpad support (enabled default in most desktopManager).
-   services.libinput.enable = true;
+  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.sandesh = {
@@ -74,18 +74,16 @@
    environment.systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
-     vscode
      git
      kitty
      waybar
-     xbacklight
      brightnessctl
      rofi
      ranger
      bibata-cursors
      neofetch
-     hyprlock
-     hypridle
+     pkgs.hyprlock
+     pkgs.hypridle
      hyprpaper
      noto-fonts
      noto-fonts-color-emoji     
@@ -105,9 +103,12 @@
    ];
 
   programs.dconf.enable = true;
-  fonts.fontconfig.enable = true;
+#  fonts.fontconfig.enable = true;
 
-   
+programs.vscode = {
+  enable = true;
+  package = pkgs.vscode.fhs;
+};   
  
   fonts = {
     packages = with pkgs; [
@@ -149,7 +150,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
