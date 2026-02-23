@@ -79,6 +79,7 @@
      waybar
      brightnessctl
      rofi
+     htop
      ranger
      bibata-cursors
      neofetch
