@@ -77,8 +77,9 @@
      kitty
      git
      libreoffice
-     foot
+     st
      celluloid
+     bleachbit
      waybar
      brightnessctl
      rofi
