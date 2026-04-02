@@ -76,6 +76,8 @@
      wget
      kitty
      git
+     pkgs.vscode
+     pkgs.vscodium
      libreoffice
      st
      celluloid
@@ -102,6 +104,8 @@
      nerd-fonts.jetbrains-mono
      usbutils
      simple-mtpfs
+     brave
+     foot
      fuse
      bluez
      nerd-fonts.fira-code
