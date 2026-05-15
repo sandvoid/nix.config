@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+ { config, lib, pkgs, ... }:
 
 {
   imports =
@@ -64,6 +64,7 @@
        tree
      ];
    };
+   programs.fuse.userAllowOther = true;
    programs.hyprland.enable = true;
    programs.firefox.enable = true;
    nixpkgs.config.allowUnfree = true;
@@ -75,76 +76,95 @@
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      kitty
+     brave
+     xfce.thunar
+     zathura    
      git
+     pkgs.foot
+     pkgs.spotify
+     pkgs.python3
+     liberation_ttf
+     nerd-fonts.fira-code
+     gcc
+     pkgs.vscodium
      libreoffice
-     foot
      celluloid
+     pkgs.libreoffice
      waybar
      brightnessctl
      rofi
      htop
+     pkgs.bleachbit
      ranger
      bibata-cursors
+     wl-clipboard
+     wl-clip-persist
+     cliphist
+     pkgs.celluloid
      neofetch
+     pkgs.liberation_ttf
      pkgs.hyprlock
      pkgs.hypridle
      hyprpaper
      noto-fonts
-     noto-fonts-color-emoji     
-     adwaita-icon-theme
-      # dejavu_fonts
-     nerd-fonts.symbols-only
+     noto-fonts-color-emoji
+     cantarell-fonts     
      vlc
-     pkgs.kdePackages.dolphin
      font-awesome
      vim
-     nerd-fonts.jetbrains-mono
      usbutils
      simple-mtpfs
      fuse
+     pkgs.brave
      bluez
-     nerd-fonts.fira-code
+     corefonts    
      imv
+     adwaita-icon-theme
+     nerd-fonts.symbols-only
+     nerd-fonts.jetbrains-mono
+     pkgs.nerd-fonts.iosevka
+     pavucontrol
+     unzip
    ];
+
+fonts.packages = with pkgs; [
+  nerd-fonts.jetbrains-mono
+     corefonts
+];
+
+services.mysql = {
+  enable = true;
+  package = pkgs.mariadb;
+};
+
 
   programs.dconf.enable = true;
 #  fonts.fontconfig.enable = true;
-
-programs.vscode = {
-  enable = true;
-  package = pkgs.vscode.fhs;
-};   
- 
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
-    ];
-
-    fontconfig = {
-      defaultFonts = {
-#        monospace  = [ "JetBrainsMono Nerd Font" ];
-#        sansSerif  = [ "JetBrainsMono Nerd Font" ];
-#        serif      = [ "JetBrainsMono Nerd Font" ];
-      };
-    };
-  };
-
-
+  
    environment.variables = {
     XCURSOR_THEME = "Adwaita";
-    XCURSOR_SIZE = "24";
+    XCURSOR_SIZE = "18";
     GTK_CURSOR_THEME = "Adwaita"; 
   };
+
+services.gnome.gnome-keyring.enable = true;
+
+security.pam.services.login.enableGnomeKeyring = true;
+
+services.dbus.enable = true;
  
  hardware.bluetooth.enable = true;
- services.blueman.enable = true; # optional GUI
+# services.blueman.enable = true; # optional GUI
 
  services.pipewire.enable = true;
  services.pipewire.pulse.enable = true;
+ 
+  # Optional: if you want KDE wallet support
+  # services.kwallet.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-   programs.mtr.enable = true;
+  # programs.mtr.enable = true;
 
   # programs.gnupg.agent = {
   #   enable = true;
@@ -161,6 +181,7 @@ programs.vscode = {
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "25.11"; 
-}
+   system.stateVersion = "25.11"; 
+  }
 
+	
