@@ -73,12 +73,13 @@
      shell = pkgs.zsh;
      extraGroups = [ "wheel"
                      "networkManager"
-                     "wireshark" ]; # Enable ‘sudo’ for the user.
+                     "wireshark"
+                     "vboxusers" ]; # Enable ‘sudo’ for the user.
      packages = with pkgs; [
        tree
      ];
    };
-   
+   users.extraGroups.vboxusers.members = [ "sandesh" ];   
    programs.fuse.userAllowOther = true;
    programs.hyprland.enable = true;
    programs.firefox.enable = true;
@@ -87,16 +88,23 @@
              enable = true;
              };
   
+  programs.nix-ld.enable = true;
+
    environment.systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
+     pkgs.iperf2
+     pkgs.iperf3
+     util-linux
      pkgs.grim
+     pkgs.johnny
      pkgs.qbittorrent
      pkgs.libmtp
      pkgs.foot
+     pkgs.p7zip
+     pkgs.virtualbox
      pkgs.iwd
      pkgs.iw
-     pkgs.virtualbox
      pkgs.nmap
      pkgs.wireshark
      pkgs.wirelesstools	
