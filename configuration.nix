@@ -93,23 +93,17 @@
    environment.systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
-     pkgs.iperf2
-     pkgs.iperf3
      util-linux
      pkgs.grim
-     pkgs.johnny
      pkgs.qbittorrent
      pkgs.libmtp
      pkgs.foot
      pkgs.p7zip
      pkgs.virtualbox
-     pkgs.iwd
-     pkgs.iw
      pkgs.nmap
      pkgs.wireshark
      pkgs.wirelesstools	
      neovim
-     pkgs.aircrack-ng
      tmux
      btop
      fastfetch
